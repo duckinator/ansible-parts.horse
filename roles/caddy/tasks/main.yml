@@ -43,7 +43,9 @@
   lineinfile:
     path: /etc/rc.conf
     regexp: '^caddy_user='
-    line: 'caddy_user="freebsd"'
+    #line: 'caddy_user="freebsd"'
+    # I don't like running it as root, but v0.11.5 tries to create /.caddy.
+    line: 'caddy_user="root"'
 
 - name: Enable caddy
   lineinfile:
