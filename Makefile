@@ -14,7 +14,7 @@ vars/secrets.yml:
 %:
 	$(MAKE) run DOMAIN="$@"
 
-run: vars/secrets.yml
+run:
 	ansible --version
 	@echo
 	ansible-playbook -i "$(DOMAIN)," playbook.yml
