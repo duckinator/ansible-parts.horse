@@ -1,0 +1,19 @@
+---
+- name: System setup
+  hosts: all
+  remote_user: root
+  roles:
+    - caddy
+    - parts-horse-deps
+
+- name: Parts Horse setup
+  hosts: all
+  remote_user: freebsd
+  roles:
+    - parts-horse
+
+- name: System reboot
+  hosts: all
+  remote_user: root
+  roles:
+    - reboot

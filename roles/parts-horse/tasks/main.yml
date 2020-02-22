@@ -1,0 +1,15 @@
+- name: Install git
+  pkgng:
+    name: git
+    state: latest
+
+- name: Clone Parts Horse repo
+  git: repo=https://github.com/duckinator/parts.horse.git version=master dest=/usr/home/freebsd/parts.horse
+
+- name: Install Parts Horse deps from requirements.txt
+  shell:
+    cmd: 'pip install --user -r requirements.txt'
+    chdir: /usr/home/freebsd/parts.horse/
+
+- name: "Auto-start Parts Horse at boot"
+  shell: 'printf "@reboot /usr/home/freebsd/parts.horse/bin/start.sh\n" | crontab -'

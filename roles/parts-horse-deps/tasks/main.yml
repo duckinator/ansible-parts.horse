@@ -1,0 +1,9 @@
+- name: Install Parts Horse dependencies
+  pkgng:
+    name: python37,py37-pip,openjpeg,freetype2
+    state: latest
+
+- name: Install htop and git
+  pkgng:
+    name: git,htop
+    state: latest

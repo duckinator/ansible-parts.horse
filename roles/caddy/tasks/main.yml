@@ -1,0 +1,58 @@
+- name: Install Caddy web server
+  pkgng:
+    name: caddy
+    state: latest
+
+- name: Set firewall_type
+  lineinfile:
+    path: /etc/rc.conf
+    regexp: '^firewall_type='
+    line: 'firewall_type="workstation"'
+
+- name: Set firewall_myservices
+  lineinfile:
+    path: /etc/rc.conf
+    regexp: '^firewall_myservices='
+    line: 'firewall_myservices="22/tcp 80/tcp 443/tcp"'
+
+- name: Set firewall_allowservices
+  lineinfile:
+    path: /etc/rc.conf
+    regexp: '^firewall_allowservices="any"'
+    line: 'firewall_allowservices="any"'
+
+- name: Enable firewall
+  lineinfile:
+    path: /etc/rc.conf
+    regexp: '^firewall_enable='
+    line: 'firewall_enable="YES"'
+
+- name: Set caddy_cert_email
+  lineinfile:
+    path: /etc/rc.conf
+    regexp: '^caddy_cert_email='
+    line: 'caddy_cert_email="me@duckie.co"'
+
+- name: Set caddy_config_path
+  lineinfile:
+    path: /etc/rc.conf
+    regexp: '^caddy_config_path='
+    line: 'caddy_config_path="/usr/home/freebsd/parts.horse/config/Caddyfile"'
+
+- name: Set caddy_user
+  lineinfile:
+    path: /etc/rc.conf
+    regexp: '^caddy_user='
+    line: 'caddy_user="freebsd"'
+
+- name: Enable caddy
+  lineinfile:
+    path: /etc/rc.conf
+    regexp: '^caddy_enable='
+    line: 'caddy_enable="YES"'
+
+- name: Enable nginx
+  lineinfile:
+    path: /etc/rc.conf
+    regexp: '^nginx_enable='
+    line: 'nginx_enable="YES"'
