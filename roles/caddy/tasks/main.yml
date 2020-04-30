@@ -57,4 +57,4 @@
   lineinfile:
     path: /etc/rc.conf
     regexp: '^nginx_enable='
-    line: 'nginx_enable="YES"'
+    state: absent
