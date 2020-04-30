@@ -9,6 +9,30 @@
     regexp: '^elasticsearch_enable='
     line: 'elasticsearch_enable="YES"'
 
+- name: Have Elasticsearch lock memory at start
+  lineinfile:
+    path: /usr/local/etc/elasticsearch/elasticsearch.yml
+    regexp: 'bootstrap.memory_lock: true$'
+    line: 'bootstrap.memory_lock: true'
+
+- name: Configure Elasticsearch for single-node operation
+  lineinfile:
+    path: /usr/local/etc/elasticsearch/elasticsearch.yml
+    regexp: '^discovery.type:'
+    line: 'discovery.type: single-node'
+
+- name: Configure Elasticsearch minimum heap size (-Xms)
+  lineinfile:
+    path: /usr/local/etc/elasticsearch/jvm.options
+    regexp: '^-Xms'
+    line: '-Xms128m'
+
+- name: Configure Elasticsearch maximum heap size (-Xmx)
+  lineinfile:
+    path: /usr/local/etc/elasticsearch/jvm.options
+    regexp: '^-Xmx'
+    line: '-Xmx128m'
+
 - name: Install htop and git
   pkgng:
     name: git,htop
