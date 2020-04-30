@@ -1,7 +1,13 @@
 - name: Install Parts Horse dependencies
   pkgng:
-    name: python37,py37-pip,openjpeg,freetype2
+    name: python37,py37-pip,openjpeg,freetype2,elasticsearch7
     state: latest
+
+- name: Enable Elasticsearch at boot
+  lineinfile:
+    path: /etc/rc.conf
+    regexp: '^elasticsearch_enable='
+    line: 'elasticsearch_enable="YES"'
 
 - name: Install htop and git
   pkgng:
