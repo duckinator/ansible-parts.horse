@@ -1,5 +1,5 @@
 - name: Clone Parts Horse repo
-  git: repo=https://github.com/duckinator/parts.horse.git version=master dest=/usr/home/freebsd/parts.horse
+  git: repo=https://github.com/duckinator/parts.horse.git version=main dest=/usr/home/freebsd/parts.horse
 
 - name: Install Parts Horse deps from requirements.txt
   shell:
