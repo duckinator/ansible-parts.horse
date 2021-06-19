@@ -36,8 +36,8 @@
 - name: Set caddy_config_path
   lineinfile:
     path: /etc/rc.conf
-    regexp: '^caddy_config_path='
-    line: 'caddy_config_path="/usr/home/freebsd/parts.horse/config/Caddyfile"'
+    regexp: '^caddy_config='
+    line: 'caddy_config="/usr/home/freebsd/parts.horse/config/Caddyfile"'
 
 - name: Set caddy_user
   lineinfile:
